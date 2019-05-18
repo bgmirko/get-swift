@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -64,7 +65,7 @@ const styles = theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        marginLeft: -drawerWidth, 
+        marginLeft: -drawerWidth,
     },
     contentShift: {
         transition: theme.transitions.create('margin', {
@@ -84,7 +85,7 @@ const styles = theme => ({
 });
 
 class Page extends Component {
-    
+
     state = {
         open: false,
     };
@@ -97,10 +98,24 @@ class Page extends Component {
         this.setState({ open: false });
     };
 
+    onMenuItemClick = route => {
+        console.log(route);
+        switch (route) {
+            case "currentWeather":
+                this.props.history.push('/current-weather');
+                break;
+            default: this.props.history.push('/');
+        }
+    }
+
+
+
     render() {
 
+        console.log(this.props);
+
         const { classes, theme } = this.props;
-        
+
         const { open } = this.state;
 
         return (
@@ -122,7 +137,7 @@ class Page extends Component {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" color="inherit" noWrap>
-                            Weather App -  brisi compose enhancers
+                            Weather App
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -142,12 +157,10 @@ class Page extends Component {
                     </div>
                     <Divider />
                     <List>
-                        {['Item 1', 'Item 2'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
+                        <ListItem button key={"Current Weather"} onClick={() => this.onMenuItemClick('currentWeather')}>
+                            <ListItemIcon><i className="material-icons">today</i></ListItemIcon>
+                            <ListItemText primary={"Current Weather"} />
+                        </ListItem>
                     </List>
                     <Divider />
                     <List>
@@ -174,4 +187,4 @@ class Page extends Component {
 Page.propTypes = propTypes;
 
 
-export default withStyles(styles, { withTheme: true })(Page);
+export default withRouter(withStyles(styles, { withTheme: true })(Page));

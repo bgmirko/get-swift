@@ -16,6 +16,5 @@ export function* getCurrentWeather(action){
         yield put(ActionTypes.getCurrentWeatherSuccess(response.data));
     } catch (error) {
         yield put(ActionTypes.getCurrentWeatherError(error));
-        console.log(error);
     }
 }

@@ -13,13 +13,11 @@ class WeatherController extends Component {
     }
 
     componentDidMount(){
-        console.log("[WeatherController] component did mount");
         this.props.onGetCurrentWeather(this.state.city);
     }
     
     getCityWeatherForUserSearch = (event) => {
         event.preventDefault();
-        console.log("city search");
         this.props.onGetCurrentWeather(this.state.city);
     }
 
@@ -31,7 +29,7 @@ class WeatherController extends Component {
 
     render() {
 
-        const { currentWeather } = this.props;
+        const { currentWeather, dataLoading} = this.props;
 
         return (
             <Page>
@@ -39,6 +37,7 @@ class WeatherController extends Component {
                     currentWeather={currentWeather}
                     onCitySearchSubmit={this.getCityWeatherForUserSearch}
                     onTextInputChange={this.handleTextInputChange}
+                    dataLoading={dataLoading}
                 />
             </Page>
         );
@@ -47,7 +46,8 @@ class WeatherController extends Component {
 
 const mapStateToProps = state => {
     return {
-        currentWeather: state.weather.currentWeather
+        currentWeather: state.weather.currentWeather,
+        dataLoading: state.weather.dataLoading,
     };
 }
 
