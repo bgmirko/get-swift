@@ -122,7 +122,7 @@ class Page extends Component {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" color="inherit" noWrap>
-                            Weather App
+                            Weather App -  brisi compose enhancers
                         </Typography>
                     </Toolbar>
                 </AppBar>

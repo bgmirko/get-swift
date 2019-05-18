@@ -5,18 +5,18 @@ const initialState = {
 
 }
 
-// const fetchAllTasksSuccess = (state, action) => {
-//     return {
-//         ...state,
-//         tasks: action.tasks
-//     }
-// }
+const getCurrentWeatherSuccess = (state, action) => {
+    return {
+        ...state,
+        currentWeather: action.payload
+    }
+}
 
 
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-    //    case actionTypes.GET_CURRENT_WEATHER: return fetchAllTasksSuccess(state, action);
+        case actionTypes.GET_CURRENT_WEATHER_SUCCESS: return getCurrentWeatherSuccess(state, action);
         default: return state;
     }
 }
