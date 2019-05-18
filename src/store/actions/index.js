@@ -1,0 +1,3 @@
+export {
+    getCurrentWeather
+} from './weather';
