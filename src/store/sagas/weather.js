@@ -6,8 +6,14 @@ const urlProxy = `https://cors-anywhere.herokuapp.com/`;
 const apiKey = 'ed7aeb32c44c8e78e7d7c6a9b5379906';
 
 export function* getCurrentWeather(action){
-    const cityName = action.payload;
-    const url = `api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
+    const { city, zip } = action.payload; 
+    let url = '';
+    if(city !== ''){
+        url = `api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+    }
+    else if(zip !== ''){
+        url = `api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apiKey}`
+    }
     try {
         const response = yield axios({
             method: 'get',

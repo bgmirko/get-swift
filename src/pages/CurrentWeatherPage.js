@@ -43,7 +43,7 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 20,
+        marginTop: 40,
         marginBottom: 20
     },
     button: {
@@ -51,6 +51,19 @@ const styles = {
     },
     spinner: {
         marginTop: 80
+    },
+    formElement: {
+        width: 120,
+        margin: '0 10px'
+    },
+    locationLabel: {
+        marginTop: 50,
+        color: 'rgb(63, 81, 181)',
+        fontWeight: 600,
+        marginBottom: 40
+    },
+    tipsMessage: {
+        fontSize: 12
     }
 
 }
@@ -62,7 +75,7 @@ const forecastWeatherPage = (props) => {
 
     let content = '';
 
-    if(dataLoading){
+    if (dataLoading) {
 
         content = <CircularProgress className={classes.spinner} />;
 
@@ -72,7 +85,7 @@ const forecastWeatherPage = (props) => {
 
             content = (
                 <React.Fragment>
-                    <Typography variant="h6" gutterBottom align="center">
+                    <Typography variant="h5" gutterBottom align="center" className={classes.locationLabel}>
                         {`Location: ${currentWeather.name}`}
                     </Typography>
                     <div className={classes.allDataGroupsContainer}>
@@ -108,12 +121,12 @@ const forecastWeatherPage = (props) => {
         } else {
             content = (
                 <Typography variant="h6" gutterBottom align="center">
-                    No data for searched location 
+                    No data for searched location
                 </Typography>
             )
         }
 
-    } 
+    }
 
 
     return (
@@ -124,17 +137,32 @@ const forecastWeatherPage = (props) => {
             <form method='POST' className={classes.form} onSubmit={onCitySearchSubmit}>
                 <TextField
                     id="city"
-                    label="Change City"
+                    label="City"
                     className={classes.formElement}
                     type="string"
                     name="city"
                     autoComplete="true"
                     margin="normal"
                     variant="outlined"
+                    value={props.city}
+                    onChange={onTextInputChange}
+                />
+                <p>OR</p>
+                <TextField
+                    id="zip"
+                    label="ZIP Code"
+                    className={classes.formElement}
+                    type="string"
+                    name="zip"
+                    autoComplete="true"
+                    margin="normal"
+                    variant="outlined"
+                    value={props.zip}
                     onChange={onTextInputChange}
                 />
                 <Button type="submit" variant="contained" color="primary" className={classes.button}>Search</Button>
             </form>
+            <p className={classes.tipsMessage}>Tip: Zip codes with data examples: 94040, 10001, 22313</p>
             {content}
         </Paper>
     );

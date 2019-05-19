@@ -31,7 +31,7 @@ const startPage = (props) => {
                 <Typography variant="h4" gutterBottom align="center">
                     Hello Weather
                 </Typography>
-                <img src={weatherImage} alt="app main image" />
+                <img src={weatherImage} alt="app main" />
             </div>
         </Page>
     );

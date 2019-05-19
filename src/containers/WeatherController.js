@@ -9,27 +9,38 @@ import * as actions from '../store/actions';
 class WeatherController extends Component {
 
     state = {
-        city: 'Belgrade'
+        city: 'Belgrade',
+        zip: ''
     }
 
     componentDidMount(){
-        this.props.onGetCurrentWeather(this.state.city);
+        const searchParams = {
+            city : this.state.city,
+            zip : this.state.zip
+        }
+        this.props.onGetCurrentWeather(searchParams);
     }
     
     getCityWeatherForUserSearch = (event) => {
         event.preventDefault();
-        this.props.onGetCurrentWeather(this.state.city);
+        const searchParams = {
+            city : this.state.city,
+            zip : this.state.zip
+        }
+        this.props.onGetCurrentWeather(searchParams);
     }
 
     handleTextInputChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
+        if(event.target.name === 'city'){
+            this.setState({city : event.target.value, zip: ''});
+        }else if(event.target.name === 'zip'){
+            this.setState({city : '', zip: event.target.value});
+        }
     }
 
     render() {
 
-        const { currentWeather, dataLoading} = this.props;
+        const { currentWeather, dataLoading } = this.props;
 
         return (
             <Page>
@@ -38,6 +49,8 @@ class WeatherController extends Component {
                     onCitySearchSubmit={this.getCityWeatherForUserSearch}
                     onTextInputChange={this.handleTextInputChange}
                     dataLoading={dataLoading}
+                    city={this.state.city}
+                    zip={this.state.zip}
                 />
             </Page>
         );
@@ -53,7 +66,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onGetCurrentWeather: (city) => dispatch(actions.getCurrentWeather(city))
+        onGetCurrentWeather: (searchParams) => dispatch(actions.getCurrentWeather(searchParams))
     }
 }
 

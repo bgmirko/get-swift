@@ -1,9 +1,9 @@
 import * as actionTypes from './actionTypes';
 
-export const getCurrentWeather = (city) => {
+export const getCurrentWeather = (searchParams) => {
     return{
         type: actionTypes.GET_CURRENT_WEATHER,
-        payload: city
+        payload: searchParams
     }
 };
 
