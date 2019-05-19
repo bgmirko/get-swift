@@ -1,5 +1,8 @@
 export {
     getCurrentWeather,
     getCurrentWeatherSuccess,
-    getCurrentWeatherError
+    getCurrentWeatherError,
+    getForecastWeather,
+    getForecastWeatherSuccess,
+    getForecastWeatherError
 } from './weather';

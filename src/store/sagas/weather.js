@@ -18,3 +18,17 @@ export function* getCurrentWeather(action){
         yield put(ActionTypes.getCurrentWeatherError(error));
     }
 }
+
+export function* getForecastWeather(action){
+    const cityName = action.payload;
+    const url = `api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`;
+    try {
+        const response = yield axios({
+            method: 'get',
+            url: `${urlProxy}${url}`
+        });
+        yield put(ActionTypes.getForecastWeatherSuccess(response.data));
+    } catch (error) {
+        yield put(ActionTypes.getForecastWeatherError(error));
+    }
+}

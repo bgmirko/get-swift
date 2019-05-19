@@ -104,6 +104,9 @@ class Page extends Component {
             case "currentWeather":
                 this.props.history.push('/current-weather');
                 break;
+                case "forecast":
+                    this.props.history.push('/forecast');
+                    break;
             default: this.props.history.push('/');
         }
     }
@@ -111,8 +114,6 @@ class Page extends Component {
 
 
     render() {
-
-        console.log(this.props);
 
         const { classes, theme } = this.props;
 
@@ -160,6 +161,10 @@ class Page extends Component {
                         <ListItem button key={"Current Weather"} onClick={() => this.onMenuItemClick('currentWeather')}>
                             <ListItemIcon><i className="material-icons">today</i></ListItemIcon>
                             <ListItemText primary={"Current Weather"} />
+                        </ListItem>
+                        <ListItem button key={"Forecast"} onClick={() => this.onMenuItemClick('forecast')}>
+                            <ListItemIcon><i className="material-icons">forward_5</i></ListItemIcon>
+                            <ListItemText primary={"Forecast"} />
                         </ListItem>
                     </List>
                     <Divider />
