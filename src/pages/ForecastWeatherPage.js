@@ -55,7 +55,13 @@ const styles = {
     selectDateContainer: {
         display: 'flex',
         justifyContent: 'center',
-        padding: 30
+        paddingBottom: 30
+    },
+    message: {
+        padding: 0,
+        margin: 0,
+        marginTop: 35,
+        color: '#f44242'
     }
 
 }
@@ -138,6 +144,7 @@ const forecastWeatherPage = (props) => {
                 />
                 <Button type="submit" variant="contained" color="primary" className={classes.button}>Search</Button>
             </form>
+            <p className={classes.message}>Please select different day or time</p>
             <div className={classes.selectDateContainer}>
                 <SimpleSelect
                     type='day'

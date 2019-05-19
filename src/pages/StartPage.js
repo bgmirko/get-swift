@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Page from '../components/Page';
 import { withStyles } from '@material-ui/core/styles';
+import weatherImage from '../assets/img/weather.png';
+import { Typography } from '@material-ui/core';
 
 
 const propTypes = {
@@ -10,12 +12,27 @@ const propTypes = {
 
 
 const styles = {
+    pageWrap: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '90vh'
+    }
 }
 
 const startPage = (props) => {
+
+    const { classes } = props;
+
     return (
         <Page>
-            <p>Start Page</p>
+            <div className={classes.pageWrap}>
+                <Typography variant="h4" gutterBottom align="center">
+                    Hello Weather
+                </Typography>
+                <img src={weatherImage} alt="app main image" />
+            </div>
         </Page>
     );
 }
