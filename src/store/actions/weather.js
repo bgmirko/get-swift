@@ -39,3 +39,26 @@ export const getForecastWeatherError = (error) => {
         type: actionTypes.GET_FORECAST_WEATHER_ERROR
     }
 };
+
+export const getUWIndex = (lat, lon) => {
+    return{
+        type: actionTypes.GET_UW_INDEX,
+        payload: {
+            lat,
+            lon
+        }
+    }
+}
+
+export const getUWIndexSuccess = (data) => {
+    return{
+        type: actionTypes.GET_UW_INDEX_SUCCESS,
+        payload: data
+    }
+}
+
+export const getUWIndexError = (error) => {
+    return{
+        type: actionTypes.GET_UW_INDEX_ERROR
+    }
+}

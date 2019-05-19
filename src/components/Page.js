@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, CssBaseline, Toolbar } from '@material-ui/core';
 import { Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
-import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, Inbox as InboxIcon, Mail as MailIcon, Menu as MenuIcon } from '@material-ui/icons';
+import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, Menu as MenuIcon } from '@material-ui/icons';
 
 const propTypes = {
     classes: PropTypes.object.isRequired,
@@ -104,9 +104,12 @@ class Page extends Component {
             case "currentWeather":
                 this.props.history.push('/current-weather');
                 break;
-                case "forecast":
-                    this.props.history.push('/forecast');
-                    break;
+            case "forecast":
+                this.props.history.push('/forecast');
+                break;
+            case "UVIndex":
+                this.props.history.push('/uv-index');
+                break;
             default: this.props.history.push('/');
         }
     }
@@ -169,12 +172,10 @@ class Page extends Component {
                     </List>
                     <Divider />
                     <List>
-                        {['Option 1', 'Option 2'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
+                        <ListItem button key={"UVIndex"} onClick={() => this.onMenuItemClick('UVIndex')}>
+                            <ListItemIcon><i className="material-icons">wb_sunny</i></ListItemIcon>
+                            <ListItemText primary={"UV Index"} />
+                        </ListItem>
                     </List>
                 </Drawer>
                 <main

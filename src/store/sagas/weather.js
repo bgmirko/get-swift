@@ -32,3 +32,18 @@ export function* getForecastWeather(action){
         yield put(ActionTypes.getForecastWeatherError(error));
     }
 }
+
+export function* getUWIndex(action){
+    const lat = action.payload.lat;
+    const lon = action.payload.lon;
+    const url = `api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    try {
+        const response = yield axios({
+            method: 'get',
+            url: `${urlProxy}${url}`
+        });
+        yield put(ActionTypes.getUWIndexSuccess(response.data));
+    } catch (error) {
+        yield put(ActionTypes.getUWIndexError(error));
+    }
+}

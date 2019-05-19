@@ -4,6 +4,7 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     currentWeather: null,
     forecastWeather: null,
+    UWIndex: null,
     error: false
 }
 
@@ -55,6 +56,29 @@ const getForecastWeatherError = (state) => {
     }
 }
 
+const getUWIndex = (state) => {
+    return {
+        ...state,
+        UWIndex: null,
+        dataLoading: true
+    }
+}
+
+const getUWIndexSuccess = (state, action) => {
+    return {
+        ...state,
+        UWIndex: action.payload,
+        dataLoading: false
+    }
+}
+
+const getUWIndexError = (state) => {
+    return {
+        ...state,
+        UWIndex: null,
+        dataLoading: false
+    }
+}
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -64,6 +88,9 @@ const reducer = (state = initialState, action) => {
         case actionTypes.GET_FORECAST_WEATHER: return getForecastWeather(state);
         case actionTypes.GET_FORECAST_WEATHER_SUCCESS: return getForecastWeatherSuccess(state, action);
         case actionTypes.GET_FORECAST_WEATHER_ERROR: return getForecastWeatherError(state);
+        case actionTypes.GET_UW_INDEX: return getUWIndex(state);
+        case actionTypes.GET_UW_INDEX_SUCCESS: return getUWIndexSuccess(state, action);
+        case actionTypes.GET_UW_INDEX_ERROR: return getUWIndexError(state);
         default: return state;
     }
 }

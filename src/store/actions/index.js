@@ -4,5 +4,8 @@ export {
     getCurrentWeatherError,
     getForecastWeather,
     getForecastWeatherSuccess,
-    getForecastWeatherError
+    getForecastWeatherError,
+    getUWIndex,
+    getUWIndexSuccess,
+    getUWIndexError
 } from './weather';
