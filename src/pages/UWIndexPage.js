@@ -9,11 +9,9 @@ const propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-
 const styles = {
     root: {
-        padding: 40,
-        height: '90vh'
+        padding: 140
     },
     allDataGroupsContainer: {
         display: 'flex',
@@ -98,9 +96,7 @@ const UWIndexPage = (props) => {
                 </Typography>
             )
         }
-
     }
-
 
     return (
         <Paper className={classes.root}>
@@ -117,6 +113,7 @@ const UWIndexPage = (props) => {
                     autoComplete="true"
                     margin="normal"
                     variant="outlined"
+                    value={props.lat}
                     onChange={onTextInputChange}
                 />
                 <TextField
@@ -128,6 +125,7 @@ const UWIndexPage = (props) => {
                     autoComplete="true"
                     margin="normal"
                     variant="outlined"
+                    value={props.lon}
                     onChange={onTextInputChange}
                 />
                 <Button type="submit" variant="contained" color="primary" className={classes.button}>Search</Button>

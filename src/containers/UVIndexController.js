@@ -39,6 +39,8 @@ class UWIndexController extends Component {
                     onUWIndexCoordinateSubmit={this.UWIndexCoordinateSubmit}
                     onTextInputChange={this.handleTextInputChange}
                     dataLoading={dataLoading}
+                    lat={this.state.lat}
+                    lon={this.state.lon}
                 />
             </Page>
         );

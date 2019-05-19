@@ -9,14 +9,14 @@ import StartPage from './pages/StartPage';
 
 const App = () => (
   <div className="App">
-  <Switch>
-    <Route path="/current-weather" exact component={WeatherController} />
-    <Route path="/forecast" exact component={ForecastWeatherController} />
-    <Route path="/uv-index" exact component={UWIndexController} />
-    <Route to="/" exact component={StartPage}/>
-    <Redirect to="/" />
-  </Switch>
-</div>
+    <Switch>
+      <Route path="/current-weather" exact component={WeatherController} />
+      <Route path="/forecast" exact component={ForecastWeatherController} />
+      <Route path="/uv-index" exact component={UWIndexController} />
+      <Route to="/" exact component={StartPage} />
+      <Redirect to="/" />
+    </Switch>
+  </div>
 );
 
 export default App;

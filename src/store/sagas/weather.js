@@ -7,7 +7,7 @@ const apiKey = 'ed7aeb32c44c8e78e7d7c6a9b5379906';
 
 export function* getCurrentWeather(action){
     const { city, zip } = action.payload; 
-    let url = '';
+    let url = 'nowhere';
     if(city !== ''){
         url = `api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
     }

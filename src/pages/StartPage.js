@@ -17,7 +17,7 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '90vh'
+        padding: 160
     }
 }
 

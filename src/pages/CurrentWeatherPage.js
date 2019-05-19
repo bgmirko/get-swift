@@ -12,8 +12,7 @@ const propTypes = {
 
 const styles = {
     root: {
-        padding: 40,
-        height: '90vh'
+        padding: 140
     },
     allDataGroupsContainer: {
         display: 'flex',
@@ -166,7 +165,7 @@ const forecastWeatherPage = (props) => {
             {content}
         </Paper>
     );
-}
+} 
 
 forecastWeatherPage.propTypes = propTypes;
 

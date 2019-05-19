@@ -99,7 +99,6 @@ class Page extends Component {
     };
 
     onMenuItemClick = route => {
-        console.log(route);
         switch (route) {
             case "currentWeather":
                 this.props.history.push('/current-weather');
